@@ -193,7 +193,6 @@
                         </div>
                     </div>
                 </div>
-
                 <!-- Sidebar Menu -->
                 <nav class="mt-4">
                     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
@@ -204,18 +203,11 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?= base_url('index.php/admin/mahasiswa') ?>" class="nav-link <?= is_active('admin/mahasiswa') ?>">
-                                <i class="nav-icon fas fa-user"></i>
-                                <p>Mahasiswa</p>
+                            <a href="<?= base_url('index.php/admin/product') ?>" class="nav-link <?= is_active('admin/product') ?>">
+                                <i class="nav-icon fas fa-cart-plus"></i>
+                                <p>Product</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="<?= base_url('index.php/media') ?>" class="nav-link <?= is_active('media') ?>">
-                                <i class="nav-icon fas fa-file"></i>
-                                <p>Media</p>
-                            </a>
-                        </li>
-
                     </ul>
                 </nav>
             </div>

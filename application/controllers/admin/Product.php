@@ -1,6 +1,6 @@
 <?php 
 
-	class Mahasiswa extends BaseController{
+	class Product extends BaseController{
 		public function __construct(){
 			parent::__construct();
 			$this->load->model('MahasiswaModel');
@@ -8,12 +8,12 @@
 		}
 
 		public function index(){
-			return $this->render("pages/admin/mahasiswa/index");
+			return $this->render("pages/admin/product/index");
 		}
 
 		public function create(){
 			$data['hoby'] = $this->HobyModel->getAll();
-			return $this->render("pages/admin/mahasiswa/create", $data);
+			return $this->render("pages/admin/product/create", $data);
 		}
 
 		public function data(){
@@ -22,8 +22,8 @@
 			$res = array_map(function($mahasiswa, $index){
 				$mahasiswa->no = $index + 1;
 				$mahasiswa->aksi = trim('
-				<a href="' . base_url('index.php/admin/mahasiswa/edit/' . $mahasiswa->id) . '" class="btn btn-warning">Edit</a>
-				<a href="' . base_url('index.php/admin/mahasiswa/destroy/' . $mahasiswa->id) . '" class="btn btn-danger">Hapus</a>
+				<a href="' . base_url('index.php/admin/product/edit/' . $mahasiswa->id) . '" class="btn btn-warning">Edit</a>
+				<a href="' . base_url('index.php/admin/product/destroy/' . $mahasiswa->id) . '" class="btn btn-danger">Hapus</a>
 			');
 				return $mahasiswa;
 			}, $mahasiswa, array_keys($mahasiswa));
@@ -48,13 +48,13 @@
 
 			$this->db->insert_batch('mahasiswa_hobi', $hobby);
 			$this->db->trans_complete();
-			redirect(base_url('index.php/admin/mahasiswa'));
+			redirect(base_url('index.php/admin/product'));
 		}
 
 
 		public function destroy($id){
 			if(!$id){
-				return redirect(base_url('index.php/admin/mahasiswa'));
+				return redirect(base_url('index.php/admin/product'));
 			}
 			$mahasiswa = $this->MahasiswaModel->find($id);
 			if(!$mahasiswa){
@@ -64,12 +64,12 @@
 			$this->db->delete('mahasiswa_hobi', ['id_mahasiswa' => $id]);
 			$this->db->delete('mahasiswa', ['id' => $id]);
 			$this->db->trans_complete();
-			return redirect(base_url('index.php/admin/mahasiswa'));
+			return redirect(base_url('index.php/admin/product'));
 		}
 
 		public function edit($id){
 			if(!$id) {
-				return redirect(base_url('index.php/admin/mahasiswa'));
+				return redirect(base_url('index.php/admin/product'));
 			}
 			$mahasiswa = $this->MahasiswaModel->find($id);
 			if(!$mahasiswa){
@@ -80,12 +80,12 @@
 				return $hoby->id_hobi;
 			}, $this->db->get_where('mahasiswa_hobi', ['id_mahasiswa' => $id])->result());
 			$data['mahasiswa'] = $mahasiswa;
-			return $this->render('pages/admin/mahasiswa/edit', $data);
+			return $this->render('pages/admin/product/edit', $data);
 		}
 
 		public function update($id){
 			if(!$id) {
-				return redirect(base_url('index.php/admin/mahasiswa'));
+				return redirect(base_url('index.php/admin/product'));
 			}
 			$mahasiswa = $this->MahasiswaModel->find($id);
 			if(!$mahasiswa){
@@ -107,6 +107,6 @@
 				$this->db->insert_batch('mahasiswa_hobi', $hobby);
 			}
 			$this->db->trans_complete();
-			return redirect(base_url('index.php/admin/mahasiswa'));
+			return redirect(base_url('index.php/admin/product'));
 		}
 	}	
