@@ -1,19 +1,16 @@
 <?php 
 
-	class Product extends BaseController{
+	class Products extends BaseController{
 		public function __construct(){
 			parent::__construct();
-			$this->load->model('MahasiswaModel');
-			$this->load->model('HobyModel');
+			$this->load->model('CategoryModel');
 		}
 
 		public function index(){
-			return $this->render("pages/admin/product/index");
-		}
-
-		public function create(){
-			$data['hoby'] = $this->HobyModel->getAll();
-			return $this->render("pages/admin/product/create", $data);
+			$categories = $this->CategoryModel->getAll();
+			return $this->render("pages/admin/product/index",[
+				'categories' => $categories
+			]);
 		}
 
 		public function data(){

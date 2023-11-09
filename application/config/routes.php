@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 | -------------------------------------------------------------------------
@@ -51,4 +51,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'Index';
 $route['404_override'] = '';
+
+
+
+$route['api/admin/products/']["POST"] = 'api/admin/Products/create';
+$route['api/admin/products/(:num)']["DELETE"] = 'api/admin/Products/destroy/$1';
+
+$route['api/admin/products/ingredients/(:num)']["PUT"] = 'api/admin/ProductItems/update/$1';
+$route['api/admin/products/ingredients/(:num)']["DELETE"] = 'api/admin/ProductItems/destroy/$1';
+$route['api/admin/products/(:num)/ingredients']["GET"] = 'api/admin/ProductItems/index/$1';
+$route['api/admin/products/(:num)/ingredients']["POST"] = 'api/admin/ProductItems/store/$1';
+
+
+
+
+
+
+
 $route['translate_uri_dashes'] = FALSE;
